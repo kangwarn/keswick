@@ -136,7 +136,7 @@ metadata:
 rules:
   # Allow Metrics Scraper to get metrics from the Metrics server
   - apiGroups: ["metrics.k8s.io"]
-    resources: ["pods", "nodes"]
+    # resources: ["pods", "nodes"]
     verbs: ["get", "list", "watch"]
 
 ---
