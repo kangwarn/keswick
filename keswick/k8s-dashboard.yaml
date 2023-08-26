@@ -42,11 +42,11 @@ spec:
     - name: https
       port: 443
       targetPort: 8443
-      nodePort: 38443
+      nodePort: 30443
     - name: http
       port: 80
       targetPort: 9090
-      nodePort: 39090
+      nodePort: 30090
   selector:
     k8s-app: kubernetes-dashboard
 
