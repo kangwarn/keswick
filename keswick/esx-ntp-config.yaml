@@ -18,7 +18,7 @@ spec:
                   "command": "SERVER"
                 },
                 {
-                  "hostname": "time.google.com",
+                  "hostname": "1.pool.ntp.org",
                   "command": "SERVER"
                 }
               ]
