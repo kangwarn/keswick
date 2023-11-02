@@ -40,7 +40,7 @@ spec:
               port: 9999
               protocol: TCP
               targetPort: grpc
-              nodePort: 30090
+              nodePort: 30099
       target:
         name: podinfo
         kind: Service
