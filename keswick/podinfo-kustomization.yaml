@@ -23,3 +23,24 @@ spec:
       target:
         name: podinfo
         kind: HorizontalPodAutoscaler
+    - patch: |-
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: podinfo
+        spec:
+          type: NodePort
+          ports:
+            - name: http
+              port: 9898
+              protocol: TCP
+              targetPort: http
+              nodePort: 30098
+            - name: grpc
+              port: 9999
+              protocol: TCP
+              targetPort: grpc
+              nodePort: 30090
+      target:
+        name: podinfo
+        kind: Service
