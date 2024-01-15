@@ -74,3 +74,5 @@ data:
      - rm /etc/netplan/50-cloud-init.yaml
      - netplan generate
      - netplan apply
+     - systemctl enable open-vm-tools.service
+     - systemctl start open-vm-tools.service
