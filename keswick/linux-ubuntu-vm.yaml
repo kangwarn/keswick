@@ -34,8 +34,9 @@ data:
     network:
       version: 2
       ethernets:
-        eth0:
-          match: {name: "e*"}
+        ens192:
+          match: 
+            driver: vmxnet3
           dhcp4: true
     users:
       - name: ubuntu
