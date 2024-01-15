@@ -27,7 +27,7 @@ data:
     #cloud-config
     write_files:
       - content: |
-          Keswick VM service says Hello World
+          VECO VM service says Hello World
         path: /helloworld
     hostname: ubuntu-server
     manage_etc_hosts: true
@@ -54,3 +54,5 @@ data:
          ubuntu:ubuntu
       expire: False
     package_update: true
+    packages:
+      - open-vm-tools
