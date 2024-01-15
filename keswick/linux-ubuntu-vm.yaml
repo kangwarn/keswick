@@ -29,15 +29,29 @@ data:
       - content: |
           VECO VM service says Hello World
         path: /helloworld
+      - content: |
+          network: {config: disabled}
+        path: /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
+        permissions: '0644'
+      - content: |
+          network:
+            version: 2
+            ethernets:
+              ens192:
+                match: 
+                  driver: vmxnet3
+                dhcp4: true
+        path: /etc/netplan/90-network-config.yaml
+        permissions: '0644'
     hostname: ubuntu-server
     manage_etc_hosts: true
-    network:
-      version: 2
-      ethernets:
-        ens192:
-          match: 
-            driver: vmxnet3
-          dhcp4: true
+    # network:
+    #   version: 2
+    #   ethernets:
+    #     ens192:
+    #       match: 
+    #         driver: vmxnet3
+    #       dhcp4: true
     users:
       - name: ubuntu
         sudo: ALL=(ALL) NOPASSWD:ALL
@@ -56,3 +70,7 @@ data:
     package_update: true
     packages:
       - open-vm-tools
+    runcmd:
+     - rm /etc/netplan/50-cloud-init.yaml
+     - netplan generate
+     - netplan apply
