@@ -32,7 +32,7 @@ data:
       - content: |
           network: {config: disabled}
         path: /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
-        permissions: '0644'
+        permissions: '0600'
       - content: |
           network:
             version: 2
@@ -42,7 +42,7 @@ data:
                   driver: vmxnet3
                 dhcp4: true
         path: /etc/netplan/90-network-config.yaml
-        permissions: '0644'
+        permissions: '0600'
     hostname: ubuntu-server
     manage_etc_hosts: true
     # network:
