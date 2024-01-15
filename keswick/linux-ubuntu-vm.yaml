@@ -2,13 +2,13 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: photon-vm
+  name: linux-vm
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
   className: guaranteed-small
-  imageName: jammy-server-cloudimg-amd64.ova
+  imageName: 192.168.101.14/jammy-server-cloudimg-amd64.ova
   powerState: poweredOn
   networkInterfaces:
   - networkName: "VM Network"
