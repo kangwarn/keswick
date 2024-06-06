@@ -12,7 +12,6 @@ metadata:
   name: intel-gpu-plugin
   namespace: default
   resourceVersion: "69833"
-  uid: 6531821c-4b14-4bf6-85df-acd508ec8d75
 spec:
   revisionHistoryLimit: 10
   selector:
