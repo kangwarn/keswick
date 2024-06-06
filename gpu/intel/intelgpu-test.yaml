@@ -1,9 +1,6 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Pod
 metadata:
-  creationTimestamp: null
-  labels:
-    app: intelgpu-test
   name: intelgpu-test
   namespace: default
 spec:
