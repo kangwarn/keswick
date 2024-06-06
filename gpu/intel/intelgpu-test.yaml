@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: intelgpu-test
+  name: intelgpu-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: intelgpu-test
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: intelgpu-test
+    spec:
+      containers:
+      - command:
+        - clinfo
+        image: kangwarn/intel-opencl-icd:latest
+        name: intel-opencl-icd
+        resources:
+          limits:
+            gpu.intel.com/i915: 1
+status: {}

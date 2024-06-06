@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  annotations:
+    deprecated.daemonset.template.generation: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{},"labels":{"app":"intel-gpu-plugin"},"name":"intel-gpu-plugin","namespace":"default"},"spec":{"selector":{"matchLabels":{"app":"intel-gpu-plugin"}},"template":{"metadata":{"labels":{"app":"intel-gpu-plugin"}},"spec":{"containers":[{"args":["-enable-monitoring","-v=2"],"env":[{"name":"NODE_NAME","valueFrom":{"fieldRef":{"fieldPath":"spec.nodeName"}}},{"name":"HOST_IP","valueFrom":{"fieldRef":{"fieldPath":"status.hostIP"}}}],"image":"intel/intel-gpu-plugin:0.30.0","imagePullPolicy":"IfNotPresent","name":"intel-gpu-plugin","securityContext":{"allowPrivilegeEscalation":false,"readOnlyRootFilesystem":true,"seLinuxOptions":{"type":"container_device_plugin_t"}},"volumeMounts":[{"mountPath":"/dev/dri","name":"devfs","readOnly":true},{"mountPath":"/sys/class/drm","name":"sysfsdrm","readOnly":true},{"mountPath":"/var/lib/kubelet/device-plugins","name":"kubeletsockets"}]}],"nodeSelector":{"intel.feature.node.kubernetes.io/gpu":"true","kubernetes.io/arch":"amd64"},"volumes":[{"hostPath":{"path":"/dev/dri"},"name":"devfs"},{"hostPath":{"path":"/sys/class/drm"},"name":"sysfsdrm"},{"hostPath":{"path":"/var/lib/kubelet/device-plugins"},"name":"kubeletsockets"}]}}}}
+  creationTimestamp: "2024-06-06T01:22:58Z"
+  generation: 1
+  labels:
+    app: intel-gpu-plugin
+  name: intel-gpu-plugin
+  namespace: default
+  resourceVersion: "69833"
+  uid: 6531821c-4b14-4bf6-85df-acd508ec8d75
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: intel-gpu-plugin
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: intel-gpu-plugin
+    spec:
+      containers:
+      - args:
+        - -enable-monitoring
+        - -v=2
+        env:
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+        - name: HOST_IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.hostIP
+        image: intel/intel-gpu-plugin:0.30.0
+        imagePullPolicy: IfNotPresent
+        name: intel-gpu-plugin
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          seLinuxOptions:
+            type: container_device_plugin_t
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /dev/dri
+          name: devfs
+          readOnly: true
+        - mountPath: /sys/class/drm
+          name: sysfsdrm
+          readOnly: true
+        - mountPath: /var/lib/kubelet/device-plugins
+          name: kubeletsockets
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        intel.feature.node.kubernetes.io/gpu: "true"
+        kubernetes.io/arch: amd64
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - hostPath:
+          path: /dev/dri
+          type: ""
+        name: devfs
+      - hostPath:
+          path: /sys/class/drm
+          type: ""
+        name: sysfsdrm
+      - hostPath:
+          path: /var/lib/kubelet/device-plugins
+          type: ""
+        name: kubeletsockets
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+    type: RollingUpdate
+status:
+  currentNumberScheduled: 1
+  desiredNumberScheduled: 1
+  numberAvailable: 1
+  numberMisscheduled: 0
+  numberReady: 1
+  observedGeneration: 1
+  updatedNumberScheduled: 1
