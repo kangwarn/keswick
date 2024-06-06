@@ -5,6 +5,7 @@ metadata:
   labels:
     app: intelgpu-test
   name: intelgpu-test
+  namespace: default
 spec:
   replicas: 1
   selector:
