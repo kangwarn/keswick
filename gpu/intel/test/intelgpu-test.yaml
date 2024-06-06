@@ -7,23 +7,15 @@ metadata:
   name: intelgpu-test
   namespace: default
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: intelgpu-test
-  strategy: {}
-  template:
-    metadata:
-      creationTimestamp: null
-      labels:
-        app: intelgpu-test
-    spec:
-      containers:
-      - command:
-        - clinfo
-        image: kangwarn/intel-opencl-icd:latest
-        name: intel-opencl-icd
-        resources:
-          limits:
-            gpu.intel.com/i915: 1
+  containers:
+  - command:
+    - clinfo
+    image: kangwarn/intel-opencl-icd:latest
+    imagePullPolicy: Always
+    name: intel-opencl-icd
+    resources:
+      limits:
+        gpu.intel.com/i915: "1"
+      requests:
+        gpu.intel.com/i915: "1"
 status: {}
