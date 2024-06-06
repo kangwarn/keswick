@@ -10,7 +10,6 @@ items:
     generation: 1
     name: intel-dp-devices
     resourceVersion: "69782"
-    uid: eb2a491c-eee1-4f33-b1fe-8a8295e3306c
   spec:
     rules:
     - labels:
@@ -211,7 +210,6 @@ items:
     generation: 1
     name: intel-gpu-platform-labeling
     resourceVersion: "69783"
-    uid: 3f4447fc-155b-4786-9782-8327e374d5c5
   spec:
     rules:
     - extendedResources:
