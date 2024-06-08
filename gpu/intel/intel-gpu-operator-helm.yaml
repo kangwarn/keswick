@@ -16,6 +16,8 @@ spec:
   dependsOn:
     - name: nfd
       namespace: flux-system
+    - name: cert-manager
+      namespace: flux-system
   chart:
     spec:
       chart: intel-device-plugins-operator
