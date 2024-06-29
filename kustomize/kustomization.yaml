@@ -5,7 +5,6 @@ resources:
   - ../base/client.yaml
   - ../base/esx-ntp-config.yaml
   - ../base/k8s-dashboard.yaml
-  - ../base/linux-ubuntu-vm.yaml
   - ../base/podinfo-kustomization.yaml
   - ../base/podinfo-source.yaml
   - ../base/web-server.yaml
